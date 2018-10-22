@@ -4,13 +4,14 @@ import {LayoutComponent} from './layout/layout.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from '@angular/router';
+import {AlertComponent} from './alert/alert.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent],
+  declarations: [AlertComponent, LayoutComponent, HeaderComponent, FooterComponent],
   exports: [LayoutComponent]
 })
 export class UiModule {

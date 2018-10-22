@@ -7,13 +7,20 @@ import {UiModule} from './ui/ui.module';
 import {HeroDetailComponent} from './hero-detail/hero-detail.component';
 import {HomeComponent} from './home/home.component';
 import {HeroListComponent} from './hero-list/hero-list.component';
-import {HeroService} from './hero.service';
+import {HeroService} from './_services/hero.service';
 import {HttpClientModule} from '@angular/common/http';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './_guards/auth.guard';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'heroes', component: HeroListComponent},
   {path: 'hero/:heroId', component: HeroDetailComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
@@ -22,6 +29,7 @@ const appRoutes: Routes = [
     HeroDetailComponent,
     HomeComponent,
     HeroListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}
-    )
+    ),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

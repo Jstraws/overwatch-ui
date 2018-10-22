@@ -5,11 +5,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-nav mr-auto">
+    <div *ngIf="isLoggedIn | async" class="navbar-nav mr-auto">
       <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       <a class="nav-item nav-link" routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a class="nav-item nav-link" href="#">About</a>
       <a class="nav-item nav-link" href="#">Contact</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <a class="btn btn-danger nav-item" routerLink="/logout">Logout</a>
     </div>
   </div>
 </nav>
