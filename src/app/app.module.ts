@@ -12,12 +12,20 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_guards/auth.guard';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserMatchHistoryComponent} from './user-match-history/user-match-history.component';
+import {NewMatchComponent} from './new-match/new-match.component';
+import {MatchDetailComponent} from './match-detail/match-detail.component';
+import {MatFormFieldModule, MatGridListModule, MatRadioModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'heroes', component: HeroListComponent},
-  {path: 'hero/:heroId', component: HeroDetailComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'heroesAvailable', component: HeroListComponent, canActivate: [AuthGuard]},
+  {path: 'hero/:heroId', component: HeroDetailComponent, canActivate: [AuthGuard]},
+  {path: 'history', component: UserMatchHistoryComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'match/:matchId', component: MatchDetailComponent, canActivate: [AuthGuard]},
+  {path: 'newMatch', component: NewMatchComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
 
   {path: '**', redirectTo: ''}
@@ -30,6 +38,9 @@ const appRoutes: Routes = [
     HomeComponent,
     HeroListComponent,
     LoginComponent,
+    UserMatchHistoryComponent,
+    NewMatchComponent,
+    MatchDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,12 @@ const appRoutes: Routes = [
       {enableTracing: false}
     ),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatRadioModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

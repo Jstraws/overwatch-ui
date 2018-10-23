@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-12 col-md-9 col-lg-7 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Log a Match</h3>
+        <form [formGroup]="matchForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <label for="map">Map</label>
+            <select id="map" class="form-control" matNativeControl required>
+              <option *ngFor="let m of mapValues" [value]="m">{{m.name}}</option>
+            </select>
+          </mat-form-field>
+
+          <mat-grid-list [cols]="5" rowHeight="3:1">
+
+          </mat-grid-list>
+
+          <mat-radio-group>
+            <mat-radio-button value="WIN">Win</mat-radio-button>
+            <mat-radio-button value="LOSS">Loss</mat-radio-button>
+          </mat-radio-group>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

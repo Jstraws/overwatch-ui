@@ -8,11 +8,11 @@
     <div *ngIf="isLoggedIn | async" class="navbar-nav mr-auto">
       <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       <a class="nav-item nav-link" routerLink="/heroes" routerLinkActive="active">Heroes</a>
-      <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Contact</a>
+      <a class="nav-item nav-link" routerLink="/history" routerLinkActive="active">Match History</a>
+      <a class="nav-item nav-link" routerLink="/newMatch" routerLinkActive="active">New Match</a>
     </div>
-    <div class="navbar-nav ml-auto">
-      <a class="btn btn-danger nav-item" routerLink="/logout">Logout</a>
+    <div *ngIf="isLoggedIn | async" class="navbar-nav ml-auto">
+      <button (click)="onClickMe()" class="btn btn-danger nav-item">Logout</button>
     </div>
   </div>
 </nav>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Match History</h3>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Match Date</th>
+                <th scope="col">Map</th>
+                <th scope="col">Result</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr (click)="matchDetail(match.matchId)" *ngFor="let match of matches">
+                <td class="">{{match.matchDate | date:'medium'}}</td>
+                <td>{{match.map.name}}</td>
+                <td>{{match.result | titlecase}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
