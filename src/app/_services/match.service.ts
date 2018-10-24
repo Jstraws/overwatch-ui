@@ -23,12 +23,35 @@ export class MatchService {
     return this.http.get(`${this.api}/user/${this.currentUser.userId}`, {headers}).pipe(map(data => <Match[]>data));
   }
 
-  saveNewMatch(match: Match): void {
+  getSingleMatch(matchId): Observable<Match> {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    this.http.post(`${this.api}/new`, match, {headers}).pipe(map(data => {
-      const tempMatch = <Match>data;
-      this.router.navigate([`/match/${tempMatch.matchId}`]);
-    }));
+    return this.http.get(`${this.api}/${matchId}`, {headers}).pipe(map(data => <Match>data));
   }
 
+  setMatchDifference(match: Match): Match {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    this.http.get(`${this.api}/recent/${this.currentUser.userId}`, {headers}).subscribe(data => {
+      const lastMatch = <Match>data;
+      match.rankDifference = lastMatch.rank - match.rank;
+    });
+    return match;
+  }
+
+  saveNewMatch(match: Match): void {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    // match = this.setMatchDifference(match);
+    this.http.get(`${this.api}/recent/${this.currentUser.userId}`, {headers}).subscribe(data => {
+      const lastMatch = <Match>data;
+      if (lastMatch != null) {
+        match.rankDifference = match.rank - lastMatch.rank;
+      } else {
+        match.rankDifference = 0;
+      }
+
+      this.http.post(`${this.api}/new`, match, {headers}).subscribe(temp => {
+        const tempMatch = <Match>temp;
+        this.router.navigate([`/match/${tempMatch.matchId}`]);
+      });
+    });
+  }
 }

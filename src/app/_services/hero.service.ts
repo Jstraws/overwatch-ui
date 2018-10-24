@@ -8,17 +8,18 @@ import {Hero} from '../_models/hero';
   providedIn: 'root'
 })
 export class HeroService {
+  private api = '//localhost:8080/hero';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    return this.http.get('//localhost:8080/hero/all', {headers});
+    return this.http.get(`${this.api}/all`, {headers});
   }
 
   get(id): Observable<Hero> {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    return this.http.get(`//localhost:8080/hero/${id}`, {headers}).pipe(map(data => <Hero>data));
+    return this.http.get(`${this.api}/${id}`, {headers}).pipe(map(data => <Hero>data));
   }
 }

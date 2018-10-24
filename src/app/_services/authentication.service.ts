@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private api = '//localhost:8080/appUser';
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -25,7 +26,7 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    return this.http.post<any>('//localhost:8080/appUser/login', {username: username, password: password}, {headers})
+    return this.http.post<any>(`${this.api}/login`, {username: username, password: password}, {headers})
       .pipe(map(user => {
         if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));

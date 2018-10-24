@@ -15,8 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserMatchHistoryComponent} from './user-match-history/user-match-history.component';
 import {NewMatchComponent} from './new-match/new-match.component';
 import {MatchDetailComponent} from './match-detail/match-detail.component';
-import {MatFormFieldModule, MatGridListModule, MatRadioModule, MatSelectModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatGridListModule, MatListModule} from '@angular/material';
+import {HeroStatisticComponent} from './hero-statistic/hero-statistic.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     UserMatchHistoryComponent,
     NewMatchComponent,
     MatchDetailComponent,
+    HeroStatisticComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +54,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    BrowserAnimationsModule,
-    MatRadioModule
+    MatListModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

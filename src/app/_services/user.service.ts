@@ -6,19 +6,21 @@ import {User} from '../_models/user';
   providedIn: 'root'
 })
 export class UserService {
+  api: string;
 
   constructor(private http: HttpClient) {
+    this.api = '//localhost:8080/appUser';
   }
 
   getById(id: number) {
-    return this.http.get(`//localhost:8080/appUser/${id}`);
+    return this.http.get(`${this.api}/${id}`);
   }
 
   register(user: User) {
-    return this.http.post(`//localhost:8080/appUser/new`, user);
+    return this.http.post(`${this.api}/new`, user);
   }
 
   update(user: User) {
-    return this.http.put(`//localhost:8080/appUser/update`, user);
+    return this.http.put(`${this.api}/update`, user);
   }
 }

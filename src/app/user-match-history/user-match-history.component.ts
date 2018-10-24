@@ -21,7 +21,6 @@ export class UserMatchHistoryComponent implements OnInit {
   }
 
   matchDetail(id) {
-    console.log(`/match/${id}`);
     this.router.navigate([`/match/${id}`]);
   }
 
