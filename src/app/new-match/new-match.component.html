@@ -4,23 +4,41 @@
       <div class="card-body">
         <h3 class="card-title">Log a Match</h3>
         <form [formGroup]="matchForm" (ngSubmit)="onSubmit()">
-          <mat-form-field>
+          <div class="form-group">
             <label for="map">Map</label>
             <select id="map" class="form-control" matNativeControl required>
               <option *ngFor="let m of mapValues" [value]="m">{{m.name}}</option>
             </select>
-          </mat-form-field>
+          </div>
 
           <mat-grid-list [cols]="5" rowHeight="3:1">
-
+            <mat-grid-tile *ngFor="let hero of heroesArray.controls; let i=index;">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="heroCheckbox{{i}}" value="{{heroesAvailable[i]}}">
+                <label class="form-check-label" for="heroCheckbox{{i}}">{{heroesAvailable[i].name}}</label>
+              </div>
+            </mat-grid-tile>
           </mat-grid-list>
 
-          <mat-radio-group>
-            <mat-radio-button value="WIN">Win</mat-radio-button>
-            <mat-radio-button value="LOSS">Loss</mat-radio-button>
-          </mat-radio-group>
+          <div class="form-group text-center">
+            <input type="radio" value="WIN"> Win
+            <input type="radio" value="LOSS"> Loss
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="row">
+    <div class="col-sm-12 col-md-9 col-lg-7 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Log a Match</h3>
+          <h2>Loading...</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

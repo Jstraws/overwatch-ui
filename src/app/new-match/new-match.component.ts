@@ -14,8 +14,9 @@ import {Match} from '../_models/match';
 })
 export class NewMatchComponent implements OnInit {
   mapValues: Array<Map>;
-  heroesAvailable: Array<Hero>;
+  heroesAvailable: Hero[];
   matchForm: FormGroup;
+  loading: boolean;
   submitted = false;
 
   constructor(
@@ -24,10 +25,6 @@ export class NewMatchComponent implements OnInit {
     private mapService: MapService,
     private matchService: MatchService
   ) {
-    this.matchForm = formBuilder.group({
-      hideRequired: false,
-      floatLabel: 'auto'
-    });
   }
 
   get f() {
@@ -35,16 +32,21 @@ export class NewMatchComponent implements OnInit {
   }
 
   get heroesArray() {
-    return <FormArray>this.matchForm.get('heroes');
+    return <FormArray>this.matchForm.get('heroesArray');
   }
 
   ngOnInit() {
     this.heroService.getAll().subscribe(data => {
       this.heroesAvailable = data;
+
     });
 
     this.mapService.getStandardMaps().subscribe(maps => {
       this.mapValues = maps;
+    });
+
+    this.matchForm = this.formBuilder.group({
+      heroesArray: this.addHeroControls()
     });
   }
 
