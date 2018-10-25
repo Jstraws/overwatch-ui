@@ -17,18 +17,22 @@ import {NewMatchComponent} from './new-match/new-match.component';
 import {MatchDetailComponent} from './match-detail/match-detail.component';
 import {MatGridListModule, MatListModule} from '@angular/material';
 import {HeroStatisticComponent} from './hero-statistic/hero-statistic.component';
+import {StatisticComponent} from './statistic/statistic.component';
+import {StatisticListComponent} from './statistic-list/statistic-list.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'heroesAvailable', component: HeroListComponent, canActivate: [AuthGuard]},
   {path: 'hero/:heroId', component: HeroDetailComponent, canActivate: [AuthGuard]},
-  {path: 'history', component: UserMatchHistoryComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'history', component: UserMatchHistoryComponent, canActivate: [AuthGuard]},
   {path: 'match/:matchId', component: MatchDetailComponent, canActivate: [AuthGuard]},
   {path: 'newMatch', component: NewMatchComponent, canActivate: [AuthGuard]},
+  {path: 'stat/:type/:value', component: StatisticComponent, canActivate: [AuthGuard]},
+  {path: 'stat/:listType', component: StatisticListComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   {path: 'login', component: LoginComponent},
 
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
@@ -41,7 +45,9 @@ const appRoutes: Routes = [
     UserMatchHistoryComponent,
     NewMatchComponent,
     MatchDetailComponent,
-    HeroStatisticComponent
+    HeroStatisticComponent,
+    StatisticComponent,
+    StatisticListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,7 @@ const appRoutes: Routes = [
     UiModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false}
+      {onSameUrlNavigation: 'reload'}
     ),
     FormsModule,
     ReactiveFormsModule,

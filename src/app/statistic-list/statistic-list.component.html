@@ -1,0 +1,95 @@
+<div class="row" *ngIf="type === 'byMap'">
+  <div class="col-sm-12 col-md-10 lg col-lg-9 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{listType}}</h3>
+        <mat-grid-list cols="5">
+          <mat-grid-tile *ngFor="let map of list">
+            <a routerLink="/stat/{{type}}/{{map.mapId}}">
+              <mat-list>
+                <mat-list-item>
+                  <img matListAvatar src="{{map.iconUrl}}">
+                  <p matLine>
+                    <span>{{map.name | titlecase}}</span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="type === 'byHero'">
+  <div class="col-sm-12 col-md-10 lg col-lg-9 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{listType}}</h3>
+        <mat-grid-list cols="5">
+          <mat-grid-tile *ngFor="let hero of list">
+            <a routerLink="/stat/{{type}}/{{hero.heroId}}">
+              <mat-list>
+                <mat-list-item>
+                  <img matListAvatar src="{{hero.heroUrl}}">
+                  <p matLine>
+                    <span>{{hero.name | titlecase}}</span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="type === 'byMapType'">
+  <div class="col-sm-12 col-md-10 lg col-lg-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{listType}}</h3>
+        <mat-grid-list cols="5">
+          <mat-grid-tile *ngFor="let item of list">
+            <a routerLink="/stat/{{type}}/{{item}}">
+              <mat-list>
+                <mat-list-item>
+                  <img matListAvatar src="{{iconUrls[item]}}">
+                  <p matLine>
+                    <span>{{item | titlecase}}</span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="type === 'bySeason'">
+  <div class="col-sm-12 col-md-10 lg col-lg-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{listType}}</h3>
+        <mat-grid-list cols="5">
+          <mat-grid-tile *ngFor="let item of list">
+            <a routerLink="/stat/{{type}}/{{item}}">
+              <mat-list>
+                <mat-list-item>
+                  <img matListAvatar src="{{iconUrls[item]}}">
+                  <p matLine>
+                    <span>{{item | titlecase}}</span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>

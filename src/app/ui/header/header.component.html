@@ -7,9 +7,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div *ngIf="isLoggedIn | async" class="navbar-nav mr-auto">
       <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-      <a class="nav-item nav-link" routerLink="/heroes" routerLinkActive="active">Heroes</a>
       <a class="nav-item nav-link" routerLink="/history" routerLinkActive="active">Match History</a>
       <a class="nav-item nav-link" routerLink="/newMatch" routerLinkActive="active">New Match</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Statistics
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/stat/byMap">By Map</a>
+          <a class="dropdown-item" routerLink="/stat/byMapType">By Map Type</a>
+          <a class="dropdown-item" routerLink="/stat/byHero">By Hero</a>
+          <a class="dropdown-item" routerLink="/stat/bySeason">By Season</a>
+        </div>
+      </li>
     </div>
     <div *ngIf="isLoggedIn | async" class="navbar-nav ml-auto">
       <button (click)="onClickMe()" class="btn btn-danger nav-item">Logout</button>
