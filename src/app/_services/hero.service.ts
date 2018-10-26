@@ -13,7 +13,6 @@ export class HeroService {
   private currentUser;
 
   constructor(private http: HttpClient) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getAll(): Observable<any> {
@@ -27,6 +26,7 @@ export class HeroService {
   }
 
   getStatistics(heroId, seasonId): Observable<Statistic> {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     return this.http.get(`${this.api}/stats/${heroId}/${this.currentUser.userId}/${seasonId}`, {headers})
       .pipe(map(data => <Statistic>data));

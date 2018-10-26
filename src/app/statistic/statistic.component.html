@@ -4,8 +4,9 @@
       <div class="card-body" *ngIf="statistic">
         <p><a routerLink="/stat/{{type}}"><i class="fa fa-long-arrow-left" aria-hidden="true">Back</i></a></p>
         <h3 class="card-title text-center">{{statistic.name | titlecase}} - Statistics</h3>
-        <h5 class="card-title text-center">{{season.startDate | date:'MMMM d, yyyy'}} to
+        <h5 class="card-title text-center" *ngIf="season.name != 'Any'">{{season.startDate | date:'MMMM d, yyyy'}} to
           {{season.endDate | date:'MMMM d, yyyy'}}</h5>
+        <h5 class="card-title text-center" *ngIf="season.name === 'Any'">Season 1 to Now</h5>
         <img class="rounded-circle mx-auto d-block" height="125px" src="{{statistic.iconUrl}}">
         <div class="card-body">
           <div class="form-group">

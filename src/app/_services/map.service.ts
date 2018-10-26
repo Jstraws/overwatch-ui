@@ -15,7 +15,6 @@ export class MapService {
 
   constructor(private http: HttpClient) {
     this.api = '//localhost:8080/map';
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getAllMaps(): Observable<Map[]> {
@@ -34,11 +33,13 @@ export class MapService {
   }
 
   getMapStatistic(mapId, seasonId): Observable<Statistic> {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     return this.http.get(`${this.api}/stats/${mapId}/${this.currentUser.userId}/${seasonId}`, {headers}).pipe(map(data => <Statistic>data));
   }
 
   getTypeStatistic(type, seasonId): Observable<Statistic> {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     return this.http.get(`${this.api}/stats/type/${type}/${this.currentUser.userId}/${seasonId}`, {headers})
       .pipe(map(data => <Statistic>data));

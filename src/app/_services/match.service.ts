@@ -15,10 +15,10 @@ export class MatchService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.api = '//localhost:8080/match';
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   getAllForUser(): Observable<Match[]> {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     return this.http.get(`${this.api}/user/${this.currentUser.userId}`, {headers}).pipe(map(data => <Match[]>data));
   }
@@ -29,6 +29,7 @@ export class MatchService {
   }
 
   setMatchDifference(match: Match): Match {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     this.http.get(`${this.api}/recent/${this.currentUser.userId}`, {headers}).subscribe(data => {
       const lastMatch = <Match>data;
@@ -38,6 +39,7 @@ export class MatchService {
   }
 
   saveNewMatch(match: Match): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
     // match = this.setMatchDifference(match);
     this.http.get(`${this.api}/recent/${this.currentUser.userId}`, {headers}).subscribe(data => {
