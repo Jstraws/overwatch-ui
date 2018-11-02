@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
+import {AppUser} from '../_models/appUser';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,17 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
+  }
+
+  register(user: AppUser) {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    return this.http.post(`${this.api}/new`, user, {headers}).pipe(map(data => {
+      if (data) {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        this.loggedIn.next(true);
+      }
+
+      return data;
+    }));
   }
 }

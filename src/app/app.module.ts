@@ -19,6 +19,7 @@ import {MatGridListModule, MatListModule} from '@angular/material';
 import {HeroStatisticComponent} from './hero-statistic/hero-statistic.component';
 import {StatisticComponent} from './statistic/statistic.component';
 import {StatisticListComponent} from './statistic-list/statistic-list.component';
+import {RegisterComponent} from './register/register.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'stat/:type/:value', component: StatisticComponent, canActivate: [AuthGuard]},
   {path: 'stat/:listType', component: StatisticListComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 
   {path: '**', redirectTo: 'home'}
 ];
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     MatchDetailComponent,
     HeroStatisticComponent,
     StatisticComponent,
-    StatisticListComponent
+    StatisticListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

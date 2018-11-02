@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../_models/user';
+import {AppUser} from '../_models/appUser';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,11 @@ export class UserService {
     return this.http.get(`${this.api}/${id}`);
   }
 
-  register(user: User) {
+  register(user: AppUser) {
     return this.http.post(`${this.api}/new`, user);
   }
 
-  update(user: User) {
+  update(user: AppUser) {
     return this.http.put(`${this.api}/update`, user);
   }
 }

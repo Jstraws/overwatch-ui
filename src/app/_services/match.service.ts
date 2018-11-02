@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Match} from '../_models/match';
-import {User} from '../_models/user';
+import {AppUser} from '../_models/appUser';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class MatchService {
   api: String;
-  currentUser: User;
+  currentUser: AppUser;
 
   constructor(private http: HttpClient, private router: Router) {
     this.api = 'https://overwatch-tracker-straus.herokuapp.com/match';

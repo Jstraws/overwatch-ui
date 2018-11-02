@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '../_models/user';
+import {AppUser} from '../_models/appUser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Map} from '../_models/map';
@@ -11,7 +11,7 @@ import {Statistic} from '../_models/statistic';
 })
 export class MapService {
   api: string;
-  currentUser: User;
+  currentUser: AppUser;
 
   constructor(private http: HttpClient) {
     this.api = 'https://overwatch-tracker-straus.herokuapp.com/map';

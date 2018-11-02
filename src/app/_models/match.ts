@@ -1,6 +1,6 @@
 import {Map} from './map';
 import {Hero} from './hero';
-import {User} from './user';
+import {AppUser} from './appUser';
 
 export class Match {
   matchId: number;
@@ -10,7 +10,7 @@ export class Match {
   matchDate: Date;
   rankDifference: number;
   rank: number;
-  appUser: User;
+  appUser: AppUser;
 
   public constructor(init?: Partial<Match>) {
     Object.assign(this, init);
