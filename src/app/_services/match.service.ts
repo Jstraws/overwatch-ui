@@ -14,7 +14,7 @@ export class MatchService {
   currentUser: User;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.api = '//localhost:8080/match';
+    this.api = 'https://overwatch-tracker-straus.herokuapp.com/match';
   }
 
   getAllForUser(): Observable<Match[]> {

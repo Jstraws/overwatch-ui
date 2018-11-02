@@ -9,7 +9,7 @@ import {Statistic} from '../_models/statistic';
   providedIn: 'root'
 })
 export class HeroService {
-  private api = '//localhost:8080/hero';
+  private api = 'https://overwatch-tracker-straus.herokuapp.com/hero';
   private currentUser;
 
   constructor(private http: HttpClient) {

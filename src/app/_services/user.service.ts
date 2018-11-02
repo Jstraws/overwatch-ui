@@ -9,7 +9,7 @@ export class UserService {
   api: string;
 
   constructor(private http: HttpClient) {
-    this.api = '//localhost:8080/appUser';
+    this.api = 'https://overwatch-tracker-straus.herokuapp.com/appUser';
   }
 
   getById(id: number) {

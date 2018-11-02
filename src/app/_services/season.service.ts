@@ -11,7 +11,7 @@ export class SeasonService {
   api: string;
 
   constructor(private http: HttpClient) {
-    this.api = '//localhost:8080/season';
+    this.api = 'https://overwatch-tracker-straus.herokuapp.com/season';
   }
 
   getAll(): Observable<Season[]> {

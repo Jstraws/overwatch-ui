@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class AuthenticationService {
   private loggedIn = new BehaviorSubject<boolean>(false);
-  private api = '//localhost:8080/appUser';
+  private api = 'https://overwatch-tracker-straus.herokuapp.com/appUser';
 
   constructor(private http: HttpClient, private router: Router) {
   }

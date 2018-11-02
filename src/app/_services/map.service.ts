@@ -14,7 +14,7 @@ export class MapService {
   currentUser: User;
 
   constructor(private http: HttpClient) {
-    this.api = '//localhost:8080/map';
+    this.api = 'https://overwatch-tracker-straus.herokuapp.com/map';
   }
 
   getAllMaps(): Observable<Map[]> {
