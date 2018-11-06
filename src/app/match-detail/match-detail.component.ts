@@ -24,4 +24,8 @@ export class MatchDetailComponent implements OnInit {
     });
   }
 
+  deleteMatch() {
+    this.matchService.deleteMatch(this.match);
+  }
+
 }
