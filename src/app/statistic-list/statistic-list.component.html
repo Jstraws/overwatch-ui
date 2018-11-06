@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">{{listType}}</h3>
-        <mat-grid-list cols="4">
+        <mat-grid-list cols="4" rowHeight="3:1">
           <mat-grid-tile *ngFor="let map of list">
             <a routerLink="/stat/{{type}}/{{map.mapId}}">
               <mat-list>
@@ -27,7 +27,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">{{listType}}</h3>
-        <mat-grid-list cols="4">
+        <mat-grid-list cols="4" rowHeight="3:1">
           <mat-grid-tile *ngFor="let hero of list">
             <a routerLink="/stat/{{type}}/{{hero.heroId}}">
               <mat-list>
