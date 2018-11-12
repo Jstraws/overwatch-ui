@@ -42,6 +42,16 @@ export class NewMatchComponent implements OnInit {
     }
   }
 
+  checkValue(event) {
+    const value = event.target.value;
+
+    if (value > 5000) {
+      event.target.value = 5000;
+    } else if (value < 1) {
+      event.target.value = 1;
+    }
+  }
+
   onSubmit() {
     this.submitted = true;
     this.model.matchDate = new Date();

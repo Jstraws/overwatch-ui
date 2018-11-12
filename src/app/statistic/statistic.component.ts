@@ -16,6 +16,7 @@ export class StatisticComponent implements OnInit {
   type: string;
   seasons: Season[];
   season: Season;
+  winRate: number;
 
   constructor(
     private mapService: MapService,
@@ -34,14 +35,17 @@ export class StatisticComponent implements OnInit {
       if (this.type === 'byMap') {
         this.mapService.getMapStatistic(value, this.season.seasonId).subscribe(map => {
           this.statistic = map;
+          this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
         });
       } else if (this.type === 'byMapType') {
         this.mapService.getTypeStatistic(value, this.season.seasonId).subscribe(mapType => {
           this.statistic = mapType;
+          this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
         });
       } else if (this.type === 'byHero') {
         this.heroService.getStatistics(value, this.season.seasonId).subscribe(hero => {
           this.statistic = hero;
+          this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
         });
       }
     });

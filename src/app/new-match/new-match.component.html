@@ -24,14 +24,15 @@
 
           <hr>
           <div class="form-group text-center">
-            <input type="radio" value="WIN" [(ngModel)]="model.result" name="result"> Win
-            <input type="radio" value="LOSS" [(ngModel)]="model.result" name="result"> Loss
-            <input type="radio" value="DRAW" [(ngModel)]="model.result" name="result"> Draw
+            <input type="radio" value="WIN" [(ngModel)]="model.result" name="result" required> Win
+            <input type="radio" value="LOSS" [(ngModel)]="model.result" name="result" required> Loss
+            <input type="radio" value="DRAW" [(ngModel)]="model.result" name="result" required> Draw
           </div>
 
           <div class="form-group">
             <label for="rank">Post-Match SR</label>
-            <input type="number" id="rank" class="form-control" [(ngModel)]="model.rank" name="rank" required>
+            <input type="number" id="rank" class="form-control" min="1" max="5000" step="1" (input)="checkValue($event)"
+                   [(ngModel)]="model.rank" name="rank" required>
           </div>
 
 

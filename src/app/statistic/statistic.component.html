@@ -23,6 +23,7 @@
                 <th scope="col">Wins</th>
                 <th scope="col">Losses</th>
                 <th scope="col">Draws</th>
+                <th scope="col">Win Rate</th>
               </tr>
               </thead>
               <tbody>
@@ -30,9 +31,10 @@
                 <td>{{statistic.wins}}</td>
                 <td>{{statistic.losses}}</td>
                 <td>{{statistic.draws}}</td>
+                <td>{{winRate * 100 | number:'1.0-0'}}%</td>
               </tr>
               <tr>
-                <td colspan="3">Rank Change: {{statistic.srChange}}</td>
+                <td colspan="4">Rank Change: {{statistic.srChange}}</td>
               </tr>
               </tbody>
             </table>
