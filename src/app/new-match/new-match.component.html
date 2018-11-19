@@ -12,7 +12,7 @@
             <div [hidden]="map.valid || map.pristine" class="alert alert-danger">Map is Required</div>
           </div>
 
-          <mat-grid-list [cols]="4" rowHeight="3:1">
+          <mat-grid-list [cols]="4" rowHeight="4:1">
             <mat-grid-tile *ngFor="let hero of heroesAvailable">
               <div class="form-check">
                 <input class="form-check-input" id="{{hero.heroId}}" type="checkbox" value="{{hero}}"
