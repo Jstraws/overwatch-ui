@@ -16,7 +16,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr (click)="matchDetail(match.matchId)" *ngFor="let match of matches">
+              <tr (click)="matchDetail(match.matchId)"
+                  *ngFor="let match of matches | paginate: config">
                 <td class="">{{match.matchDate | date:'medium'}}</td>
                 <td>{{match.map.name}}</td>
                 <td>{{match.result | titlecase}}</td>
@@ -25,6 +26,19 @@
               </tr>
               </tbody>
             </table>
+          </div>
+          <div class="text-center">
+            <pagination-controls [id]="config.id"
+                                 [maxSize]="maxSize"
+                                 [directionLinks]="directionLinks"
+                                 [autoHide]="autoHide"
+                                 [responsive]="responsive"
+                                 [previousLabel]="labels.previousLabel"
+                                 [nextLabel]="labels.nextLabel"
+                                 [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                                 [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                                 [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                                 (pageChange)="onPageChange($event)"></pagination-controls>
           </div>
         </div>
       </div>

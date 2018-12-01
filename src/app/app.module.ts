@@ -20,6 +20,7 @@ import {HeroStatisticComponent} from './hero-statistic/hero-statistic.component'
 import {StatisticComponent} from './statistic/statistic.component';
 import {StatisticListComponent} from './statistic-list/statistic-list.component';
 import {RegisterComponent} from './register/register.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    NgxPaginationModule
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]
