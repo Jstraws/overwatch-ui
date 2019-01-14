@@ -33,7 +33,7 @@ export class StatisticListComponent implements OnInit, OnDestroy {
         if (this.type === 'byMap') {
           console.log('MAP');
           this.listType = 'Map Statistics';
-          this.mapService.getAllMaps().subscribe(data => {
+          this.mapService.getStandardMaps().subscribe(data => {
             this.list = data;
           });
         } else if (this.type === 'byHero') {
