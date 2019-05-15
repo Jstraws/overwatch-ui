@@ -6,10 +6,10 @@
         <form #matchForm="ngForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="mapName">Map</label>
-            <select class="form-control" id="mapName" required [(ngModel)]="model.map" name="map" #map="ngModel">
+            <select #map="ngModel" [(ngModel)]="model.gameMap" class="form-control" id="mapName" name="map" required>
               <option *ngFor="let m of mapValues" [ngValue]="m">{{m.name}}</option>
             </select>
-            <div [hidden]="map.valid || map.pristine" class="alert alert-danger">Map is Required</div>
+            <div [hidden]="map.valid || map.pristine" class="alert alert-danger">GameMap is Required</div>
           </div>
 
           <mat-grid-list [cols]="4" rowHeight="4:1">

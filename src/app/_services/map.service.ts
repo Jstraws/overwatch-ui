@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AppUser} from '../_models/appUser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Map} from '../_models/map';
+import {GameMap} from '../_models/gameMap';
 import {map} from 'rxjs/operators';
 import {Statistic} from '../_models/statistic';
 
@@ -17,14 +17,14 @@ export class MapService {
     this.api = 'https://overwatch-tracker-straus.herokuapp.com/map';
   }
 
-  getAllMaps(): Observable<Map[]> {
+  getAllMaps(): Observable<GameMap[]> {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    return this.http.get(`${this.api}/all`, {headers}).pipe(map(data => <Map[]>data));
+    return this.http.get(`${this.api}/all`, {headers}).pipe(map(data => <GameMap[]>data));
   }
 
-  getStandardMaps(): Observable<Map[]> {
+  getStandardMaps(): Observable<GameMap[]> {
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
-    return this.http.get(`${this.api}/standard`, {headers}).pipe(map(data => <Map[]>data));
+    return this.http.get(`${this.api}/standard`, {headers}).pipe(map(data => <GameMap[]>data));
   }
 
   getMapTypes(): Observable<string[]> {

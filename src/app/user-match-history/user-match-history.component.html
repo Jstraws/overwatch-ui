@@ -19,7 +19,7 @@
               <tr (click)="matchDetail(match.matchId)"
                   *ngFor="let match of matches | paginate: config">
                 <td class="">{{match.matchDate | date:'medium'}}</td>
-                <td>{{match.map.name}}</td>
+                <td>{{match.gameMap.name}}</td>
                 <td>{{match.result | titlecase}}</td>
                 <td>{{match.rankDifference}}</td>
                 <td>{{match.rank}}</td>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Map} from '../_models/map';
+import {GameMap} from '../_models/gameMap';
 import {Hero} from '../_models/hero';
 import {HeroService} from '../_services/hero.service';
 import {MapService} from '../_services/map.service';
@@ -12,7 +12,7 @@ import {Match} from '../_models/match';
   styleUrls: ['./new-match.component.css']
 })
 export class NewMatchComponent implements OnInit {
-  mapValues: Map[];
+  mapValues: GameMap[];
   heroesAvailable: Hero[];
   submitted = false;
   model = new Match();

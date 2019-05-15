@@ -3,8 +3,8 @@
     <div class="card">
       <div class="card-body" *ngIf="match">
         <p><a routerLink="/history"><i class="fa fa-long-arrow-left ml-auto" aria-hidden="true">Back</i></a></p>
-        <h3 class="card-title">{{match.matchDate | date:'medium'}} - {{match.map.name}}</h3>
-        <p class="card-text">Map Type: {{match.map.type | titlecase}}</p>
+        <h3 class="card-title">{{match.matchDate | date:'medium'}} - {{match.gameMap.name}}</h3>
+        <p class="card-text">Map Type: {{match.gameMap.type | titlecase}}</p>
         <p class="card-text">Result: {{match.result | titlecase}}</p>
         <p class="card-text">Rank Difference: {{match.rankDifference}}</p>
         <p class="card-text">Rank After Match: {{match.rank}}</p>

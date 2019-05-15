@@ -1,4 +1,4 @@
-export class Map {
+export class GameMap {
   mapId: number;
   name: string;
   type: string;

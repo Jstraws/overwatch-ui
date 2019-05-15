@@ -47,6 +47,11 @@ export class StatisticComponent implements OnInit {
           this.statistic = hero;
           this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
         });
+      } else if (this.type === 'bySeason') {
+        this.seasonService.getSeasonStatistic(this.season.seasonId).subscribe(season => {
+          this.statistic = season;
+          this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
+        });
       }
     });
 
@@ -68,6 +73,11 @@ export class StatisticComponent implements OnInit {
     } else if (this.type === 'byHero') {
       this.heroService.getStatistics(value, this.season.seasonId).subscribe(hero => {
         this.statistic = hero;
+        this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
+      });
+    } else if (this.type === 'bySeason') {
+      this.seasonService.getSeasonStatistic(this.season.seasonId).subscribe(season => {
+        this.statistic = season;
         this.winRate = this.statistic.wins / (this.statistic.wins + this.statistic.draws + this.statistic.losses);
       });
     }

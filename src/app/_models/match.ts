@@ -1,11 +1,11 @@
-import {Map} from './map';
+import {GameMap} from './gameMap';
 import {Hero} from './hero';
 import {AppUser} from './appUser';
 
 export class Match {
   matchId: number;
   result: string;
-  map: Map;
+  gameMap: GameMap;
   heroes: Array<Hero>;
   matchDate: Date;
   rankDifference: number;
