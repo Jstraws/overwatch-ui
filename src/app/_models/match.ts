@@ -24,7 +24,6 @@ export class Match {
   }
 
   deleteHero(hero: Hero) {
-    const index = this.heroes.indexOf(hero, 0);
-    this.heroes.splice(index, 1);
+    this.heroes = this.heroes.filter(obj => obj.name !== hero.name);
   }
 }

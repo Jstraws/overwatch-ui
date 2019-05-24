@@ -21,6 +21,9 @@ export class MatchDetailComponent implements OnInit {
 
     this.matchService.getSingleMatch(id).subscribe(data => {
       this.match = data;
+      this.match.heroes = this.match.heroes.sort((a, b): number => {
+        return a.name > b.name ? 1 : -1;
+      });
     });
   }
 

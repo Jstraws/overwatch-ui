@@ -4,14 +4,16 @@
       <div class="card-body" *ngIf="match">
         <p><a routerLink="/history"><i class="fa fa-long-arrow-left ml-auto" aria-hidden="true">Back</i></a></p>
         <h3 class="card-title">{{match.matchDate | date:'medium'}} - {{match.gameMap.name}}</h3>
+        <img *ngIf="match.gameMap.iconUrl" alt="" class="rounded-circle mx-auto d-block"
+             height="125px" src="{{match.gameMap.iconUrl}}">
         <p class="card-text">Map Type: {{match.gameMap.type | titlecase}}</p>
         <p class="card-text">Result: {{match.result | titlecase}}</p>
         <p class="card-text">Rank Difference: {{match.rankDifference}}</p>
         <p class="card-text">Rank After Match: {{match.rank}}</p>
         <hr>
         <h5 class="card-text">Heroes Played:</h5>
-        <mat-list>
-          <mat-list-item *ngFor="let hero of match.heroes">
+        <mat-list role="list">
+          <mat-list-item *ngFor="let hero of match.heroes" role="listitem">
             <img matListAvatar src="{{hero.heroUrl}}">
             <p matLine>
               <span>{{hero.name}}</span>
