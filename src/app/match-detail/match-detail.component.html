@@ -18,8 +18,13 @@
             </p>
           </mat-list-item>
         </mat-list>
-        <div class="offset-sm-3 col-sm-6 text-center">
-          <button class="btn btn-danger text-center btn-block" (click)="deleteMatch()">Delete</button>
+        <div class="row text-center pt-3">
+          <div class="col-sm-6">
+            <a class="btn btn-info text-center btn-block" routerLink="/edit/{{match.matchId}}">Edit</a>
+          </div>
+          <div class="col-sm-6">
+            <button (click)="deleteMatch()" class="btn btn-danger text-center btn-block">Delete</button>
+          </div>
         </div>
       </div>
     </div>

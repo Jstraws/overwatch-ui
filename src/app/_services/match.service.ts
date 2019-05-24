@@ -52,4 +52,12 @@ export class MatchService {
       this.router.navigate(['/history']);
     });
   }
+
+  updateMatch(match: Match): void {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    this.http.post(`${this.api}/update`, match, {headers}).subscribe(data => {
+      const tempMatch = <Match>data;
+      this.router.navigate([`/match/${tempMatch.matchId}`]);
+    });
+  }
 }

@@ -21,6 +21,7 @@ import {StatisticComponent} from './statistic/statistic.component';
 import {StatisticListComponent} from './statistic-list/statistic-list.component';
 import {RegisterComponent} from './register/register.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {EditMatchComponent} from './edit-match/edit-match.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'history', component: UserMatchHistoryComponent, canActivate: [AuthGuard]},
   {path: 'match/:matchId', component: MatchDetailComponent, canActivate: [AuthGuard]},
   {path: 'newMatch', component: NewMatchComponent, canActivate: [AuthGuard]},
+  {path: 'edit/:matchId', component: EditMatchComponent, canActivate: [AuthGuard]},
   {path: 'stat/:type/:value', component: StatisticComponent, canActivate: [AuthGuard]},
   {path: 'stat/:listType', component: StatisticListComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   {path: 'login', component: LoginComponent},
@@ -51,7 +53,8 @@ const appRoutes: Routes = [
     HeroStatisticComponent,
     StatisticComponent,
     StatisticListComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditMatchComponent
   ],
   imports: [
     BrowserModule,
