@@ -5,7 +5,8 @@ import {MapService} from '../_services/map.service';
 import {MatchService} from '../_services/match.service';
 import {GameMap} from '../_models/gameMap';
 import {Match} from '../_models/match';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppUser} from '../_models/appUser';
 
 @Component({
   selector: 'app-edit-match',
@@ -23,7 +24,8 @@ export class EditMatchComponent implements OnInit {
     private heroService: HeroService,
     private mapService: MapService,
     private matchService: MatchService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -39,6 +41,10 @@ export class EditMatchComponent implements OnInit {
     this.matchService.getSingleMatch(id).subscribe(data => {
       this.model = new Match(data);
       this.startingSr = this.model.rank - this.model.rankDifference;
+      const currentUser: AppUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this.model.appUser.userId !== currentUser.userId) {
+        this.router.navigate(['/home']);
+      }
     });
   }
 
