@@ -1,16 +1,18 @@
 import {Component, OnInit} from '@angular/core';
+import {ChartDataSets, ChartOptions} from 'chart.js';
+import {Color, Label} from 'ng2-charts';
 import {AppUser} from '../_models/appUser';
 import {ActivityLog} from '../_models/activity-log';
 import {MatchService} from '../_services/match.service';
-import {ChartDataSets, ChartOptions} from 'chart.js';
-import {Color, Label} from 'ng2-charts';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-rank-graph',
+  templateUrl: './rank-graph.component.html',
+  styleUrls: ['./rank-graph.component.css']
 })
-export class HomeComponent implements OnInit {
+export class RankGraphComponent implements OnInit {
+  public startingDate: Date;
+  public endingDate: Date;
   public lineChartData: ChartDataSets[];
   public lineChartLabels: Label[];
   public lineChartOptions: ChartOptions = {
@@ -53,7 +55,30 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.matchService.fetchActivityLog(this.currentUser.userId).subscribe(data => {
+    this.endingDate = new Date();
+    this.startingDate = new Date();
+    this.startingDate.setDate(this.endingDate.getDate() - 30);
+    const activityDTO = {
+      'startingDate': this.startingDate,
+      'endingDate': this.endingDate,
+      'userId': this.currentUser.userId
+    };
+    this.matchService.fetchRankActivity(activityDTO).subscribe(data => {
+      this.activityLogs = data;
+      this.lineChartLabels = this.activityLogs.map(log => log.date);
+      this.lineChartData = [{
+        data: this.activityLogs.map(log => log.value)
+      }];
+    });
+  }
+
+  updateGraph() {
+    const activityDTO = {
+      'startingDate': this.startingDate,
+      'endingDate': this.endingDate,
+      'userId': this.currentUser.userId
+    };
+    this.matchService.fetchRankActivity(activityDTO).subscribe(data => {
       this.activityLogs = data;
       this.lineChartLabels = this.activityLogs.map(log => log.date);
       this.lineChartData = [{

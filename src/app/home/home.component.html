@@ -1,9 +1,19 @@
 <div class="row">
-  <div class="col-sm-8 col-md-6 col-lg-6 mx-auto">
+  <div class="col-sm-10 mx-auto">
     <div class="card">
       <div class="card-body">
         <div class="container">
           <h3 class="card-title text-center">Welcome {{currentUser.firstName}}</h3>
+          <h5 class="card-text text-center">Match Activity (Past 30 Days)</h5>
+          <canvas *ngIf="activityLogs" [chartType]="lineChartType" [colors]="lineChartColors" [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [legend]="lineChartLegend"
+                  [options]="lineChartOptions"
+                  [plugins]="lineChartPlugins"
+                  baseChart
+                  height="400"
+                  width="700">
+          </canvas>
           <ul class="list-inline text-center">
             <li class="list-inline-item"><a routerLink="/history" routerLinkActive="active" class="btn btn-primary">Match
               History</a></li>

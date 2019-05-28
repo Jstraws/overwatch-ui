@@ -5,6 +5,7 @@ import {Match} from '../_models/match';
 import {AppUser} from '../_models/appUser';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {ActivityLog} from '../_models/activity-log';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,15 @@ export class MatchService {
       const tempMatch = <Match>data;
       this.router.navigate([`/match/${tempMatch.matchId}`]);
     });
+  }
+
+  fetchActivityLog(userId: number): Observable<ActivityLog[]> {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    return this.http.get(`${this.api}/activity/${userId}`, {headers}).pipe(map(data => <ActivityLog[]>data));
+  }
+
+  fetchRankActivity(rankDTO): Observable<ActivityLog[]> {
+    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('admin:thisIsAPass3215')});
+    return this.http.post(`${this.api}/rank`, rankDTO, {headers}).pipe(map(data => <ActivityLog[]>data));
   }
 }

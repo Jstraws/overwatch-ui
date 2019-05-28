@@ -15,13 +15,23 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserMatchHistoryComponent} from './user-match-history/user-match-history.component';
 import {NewMatchComponent} from './new-match/new-match.component';
 import {MatchDetailComponent} from './match-detail/match-detail.component';
-import {MatGridListModule, MatListModule} from '@angular/material';
+import {
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule
+} from '@angular/material';
 import {HeroStatisticComponent} from './hero-statistic/hero-statistic.component';
 import {StatisticComponent} from './statistic/statistic.component';
 import {StatisticListComponent} from './statistic-list/statistic-list.component';
 import {RegisterComponent} from './register/register.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EditMatchComponent} from './edit-match/edit-match.component';
+import {ChartsModule} from 'ng2-charts';
+import {RankGraphComponent} from './rank-graph/rank-graph.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -34,6 +44,7 @@ const appRoutes: Routes = [
   {path: 'edit/:matchId', component: EditMatchComponent, canActivate: [AuthGuard]},
   {path: 'stat/:type/:value', component: StatisticComponent, canActivate: [AuthGuard]},
   {path: 'stat/:listType', component: StatisticListComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
+  {path: 'graph/rank', component: RankGraphComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
 
@@ -54,21 +65,28 @@ const appRoutes: Routes = [
     StatisticComponent,
     StatisticListComponent,
     RegisterComponent,
-    EditMatchComponent
+    EditMatchComponent,
+    RankGraphComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
+    ChartsModule,
+    FormsModule,
     HttpClientModule,
-    UiModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule,
+    MatListModule,
+    MatNativeDateModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       {onSameUrlNavigation: 'reload'}
     ),
-    FormsModule,
-    ReactiveFormsModule,
-    MatGridListModule,
-    MatListModule,
-    NgxPaginationModule
+    UiModule,
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

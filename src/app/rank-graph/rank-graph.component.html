@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-10 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="container">
+          <h3 class="card-title text-center">Rank Change from {{startingDate | date:'MMMM d, yyyy'}}
+            to {{endingDate | date:'MMMM d, yyyy'}}</h3>
+          <div class="row">
+            <div class="col-sm-3 offset-3">
+              <mat-form-field>
+                <input (dateChange)="updateGraph()" [(ngModel)]="startingDate" [matDatepicker]="startDate" matInput
+                       placeholder="Starting Date">
+                <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field>
+                <input (dateChange)="updateGraph()" [(ngModel)]="endingDate" [matDatepicker]="endDate" matInput
+                       placeholder="Ending Date">
+                <mat-datepicker-toggle [for]="endDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <canvas *ngIf="activityLogs" [chartType]="lineChartType" [colors]="lineChartColors" [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [legend]="lineChartLegend"
+                  [options]="lineChartOptions"
+                  [plugins]="lineChartPlugins"
+                  baseChart
+                  height="400"
+                  width="700">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
