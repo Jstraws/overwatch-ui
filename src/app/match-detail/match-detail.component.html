@@ -20,6 +20,12 @@
             </p>
           </mat-list-item>
         </mat-list>
+        <br>
+        <h5 class="card-text">Comments:</h5>
+        <div class="row">
+          <span class="col-md-12">{{match.comments}}</span>
+          <span *ngIf="!match.comments" class="col-md-12">No Comments</span>
+        </div>
         <div class="row text-center pt-3">
           <div class="col-sm-6">
             <a class="btn btn-info text-center btn-block" routerLink="/edit/{{match.matchId}}">Edit</a>

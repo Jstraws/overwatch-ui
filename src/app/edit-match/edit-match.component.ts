@@ -68,6 +68,7 @@ export class EditMatchComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log(this.model);
     this.model.gameMap = this.mapValues.find(map => map.mapId === this.model.gameMap.mapId);
     this.model.rankDifference = this.model.rank - this.startingSr;
     this.matchService.updateMatch(this.model);

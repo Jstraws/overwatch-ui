@@ -11,6 +11,7 @@ export class Match {
   rankDifference: number;
   rank: number;
   appUser: AppUser;
+  comments: string;
 
   public constructor(init?: Partial<Match>) {
     Object.assign(this, init);
