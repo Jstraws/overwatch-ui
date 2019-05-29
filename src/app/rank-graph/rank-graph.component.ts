@@ -46,9 +46,8 @@ export class RankGraphComponent implements OnInit {
   public lineChartLegend = false;
   public lineChartType = 'line';
   public lineChartPlugins = [];
-
+  public activityLogs: ActivityLog[];
   private currentUser: AppUser;
-  private activityLogs: ActivityLog[];
 
   constructor(private matchService: MatchService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

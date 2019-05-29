@@ -44,9 +44,8 @@ export class HomeComponent implements OnInit {
   public lineChartLegend = false;
   public lineChartType = 'line';
   public lineChartPlugins = [];
-
-  private currentUser: AppUser;
-  private activityLogs: ActivityLog[];
+  public currentUser: AppUser;
+  public activityLogs: ActivityLog[];
 
   constructor(private matchService: MatchService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
